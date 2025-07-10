@@ -25,13 +25,14 @@ fn create_template_commands() {
 }
 
 fn create_express_route(args: Vec<String>) {
-    let mut file_created = false;
 
+    let mut file_created = false;
 
     while !file_created {
 
         if args.contains(&"--ARGS".to_owned()) {
             create_template_commands();
+            break;
         }
 
         if args.contains(&"--JS".to_owned()) {
@@ -41,6 +42,8 @@ fn create_express_route(args: Vec<String>) {
                 let file = File::create("server.js");
                 file.unwrap().write("".as_ref()).expect("No Input File Created");
             }
+
+            break;
         }
 
         if args.contains(&"--TS".to_owned()) {
@@ -51,6 +54,8 @@ fn create_express_route(args: Vec<String>) {
                 file.unwrap().write("".as_ref()).expect("No Input File Created");
 
             }
+
+            break;
         }
 
         if args.contains(&"--RS".to_owned()) {
@@ -63,21 +68,22 @@ fn create_express_route(args: Vec<String>) {
 
             }
 
+            break;
         }
 
         if args.contains(&"/npx/react".to_owned()) {
 
             std::process::Command::new("npx create-react-app");
-
+            break;
         }
 
         if args.contains(&"/npx/next".to_owned()) {
 
             std::process::Command::new("npx create-next-app");
-
+            break;
         }
 
-        
+
         file_created = true;
     }
 }
