@@ -7,7 +7,7 @@ fn main(){
 
     let arg: Vec<String> = env::args().collect();
     create_express_route(arg.to_vec());
-
+    
 }
 
 fn create_template_commands() {
@@ -65,7 +65,19 @@ fn create_express_route(args: Vec<String>) {
 
         }
 
+        if args.contains(&"/npx/react".to_owned()) {
 
+            std::process::Command::new("npx create-react-app");
+
+        }
+
+        if args.contains(&"/npx/next".to_owned()) {
+
+            std::process::Command::new("npx create-next-app");
+
+        }
+
+        
         file_created = true;
     }
 }
